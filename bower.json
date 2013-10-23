@@ -1,0 +1,15 @@
+{
+    "name": "payment",
+    "version": "0.0.0",
+    "main": "./payment.js",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
+    "dependencies": {
+        "angular": "*",
+        "angular-ui-utils": "*",
+        "10digit.utils": "~0.0.0"
+    }
+}

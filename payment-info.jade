@@ -1,0 +1,63 @@
+div#paymentInfo
+    div(ng-show="cards.length > 0")
+        p
+            strong Saved Cards
+            p(ng-repeat="card in cards") {{card.type}} ending in {{card.last4}} and expiring {{card.exp_month}}/{{card.exp_year}}  <a ng-click="remove(card)" ng-href="#">delete</a>
+
+    div.alert.alert-success(ng-show="success")
+        button.close(type="button", data-dismiss="alert") &times;
+        p {{success}}
+
+    div.alert.alert-info(ng-show="info")
+        button.close(type="button", data-dismiss="alert") &times;
+        p {{info}}
+
+    div(ng-form="cardForm")
+        p
+            strong New Card
+
+        div.alert.alert-error(ng-show="cardForm.$invalid && submitted")
+            button.close(type="button", data-dismiss="alert") &times;
+            p(ng-show="cardForm.number.$error['required']") "Card Number" is required.
+            p(ng-show="cardForm.number.$error['validator']") "Card Number" is not valid.
+            p(ng-show="cardForm.cvc.$error['required']") "Card CVC" is required.
+            p(ng-show="cardForm.cvc.$error['validator']") "Card CVC" is not valid.
+            p(ng-show="cardForm.expiration.$error['required']") "Card Expiration" is required.
+            p(ng-show="cardForm.expiration.$error['validator']") "Card Expiration" is not valid.
+
+        .row-fluid
+            .span6
+                label Billing Name
+                input#billingName(type="text", ng-model="new_card.name")
+            .span6
+                label Card Number
+                input(type="text", name="number", ui-validate=" 'validate.number($value)' ", ng-model="new_card.number", placeholder="xxxx-xxxx-xxxx-xxxx", ng-removefill, required)
+        .row-fluid
+            .span6
+                label Card Expiration
+                input(type="text", name="expiration", ui-validate=" 'validate.expiry($value)' ", ng-model="new_card.expiration", ui-mask="99/9999", ng-removefill, tooltip="Should be formatted MM/YYYY", tooltip-trigger="focus", tooltip-placement="right", required)
+            .span6
+                label Card CVC
+                input(type="text", name="cvc", ui-validate=" 'validate.cvc($value)' ", ng-model="new_card.cvc",  ng-removefill, tooltip="These are the numbers on the back of your card in the signature box for most cards, or above your card number for American Express cards.", tooltip-trigger="focus", tooltip-placement="right", required)
+        .row-fluid
+            .span6
+                label Billing Country
+                geo-typeahead(typeahead-factory="Countries", name="billing_country", typeahead-on-select="setParentScope('new_card', 'address_country', selected)")
+            .span6
+                label Billing State
+                geo-typeahead(typeahead-factory="States", name="billing_state", typeahead-on-select="setParentScope('new_card', 'address_state', selected)")
+        .row-fluid
+            .span6
+                label Billing Zip
+                input(type="text", ng-model="new_card.address_zip")
+            .span6
+                label Billing City
+                input(type="text", ng-model="new_card.address_city")
+        .row-fluid
+            .span6
+                label Billing Address
+                input(type="text", ng-model="new_card.address_line1")
+            .span6(ng-show="!signup")
+                label &nbsp; &nbsp;
+                input.btn(type="button", value="Save Card", ng-click="add(new_card)")
+
