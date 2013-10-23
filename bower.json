@@ -1,6 +1,6 @@
 {
-    "name": "payment",
-    "version": "0.0.1",
+    "name": "10digit-payment",
+    "version": "0.0.2",
     "main": "./payment.js",
     "ignore": [
         "**/.*",
@@ -10,6 +10,6 @@
     "dependencies": {
         "angular": "*",
         "angular-ui-utils": "*",
-        "10digit/utils": "~0.0.0"
+        "10digit-utils": "*"
     }
 }
