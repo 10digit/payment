@@ -1,6 +1,6 @@
 angular.module('10digit.payment', ['ui.validate', '10digit.utils'])
 
-.factory('StripeConfig', function(){
+.factory('PaymentConfig', function(){
     var config = {
         testMode: false,
         stripeKey: '',
@@ -22,7 +22,7 @@ angular.module('10digit.payment', ['ui.validate', '10digit.utils'])
     return config;
 })
 
-.factory('StripeApp',['StripeConfig', function(Config){
+.factory('StripeApp',['PaymentConfig', function(Config){
 	var Stripe = window.Stripe || {};
 	if(Stripe.setPublishableKey){
 		Stripe.setPublishableKey(Config.stripeKey)
@@ -180,7 +180,7 @@ angular.module('10digit.payment', ['ui.validate', '10digit.utils'])
 	}
 }])
 
-.controller('PaymentInfoCtrl',['$rootScope', '$scope', 'CreditCard', 'StripeConfig', function($rootScope, $scope, CreditCard, Config){
+.controller('PaymentInfoCtrl',['$rootScope', '$scope', 'CreditCard', 'PaymentConfig', function($rootScope, $scope, CreditCard, Config){
 	$scope.cards = CreditCard.paymentMethods;
 	if(!$scope.signup)
 		CreditCard.load();
