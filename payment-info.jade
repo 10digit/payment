@@ -28,35 +28,35 @@ div#paymentInfo
         .row-fluid
             .span6
                 label Billing Name
-                input#billingName(type="text", ng-model="new_card.name")
+                input#billingName.input-block-level(type="text", ng-model="new_card.name")
             .span6
                 label Card Number
-                input(type="text", name="number", ui-validate=" 'validate.number($value)' ", ng-model="new_card.number", placeholder="xxxx-xxxx-xxxx-xxxx", ng-removefill, required)
+                input.input-block-level(type="text", name="number", ui-validate=" 'validate.number($value)' ", ng-model="new_card.number", placeholder="xxxx-xxxx-xxxx-xxxx", ng-removefill, required)
         .row-fluid
             .span6
                 label Card Expiration
-                input(type="text", name="expiration", ui-validate=" 'validate.expiry($value)' ", ng-model="new_card.expiration", ui-mask="99/9999", ng-removefill, tooltip="Should be formatted MM/YYYY", tooltip-trigger="focus", tooltip-placement="right", required)
+                input.input-block-level(type="text", name="expiration", ui-validate=" 'validate.expiry($value)' ", ng-model="new_card.expiration", ui-mask="99/9999", ng-removefill, tooltip="Should be formatted MM/YYYY", tooltip-trigger="focus", tooltip-placement="right", required)
             .span6
                 label Card CVC
-                input(type="text", name="cvc", ui-validate=" 'validate.cvc($value)' ", ng-model="new_card.cvc",  ng-removefill, tooltip="These are the numbers on the back of your card in the signature box for most cards, or above your card number for American Express cards.", tooltip-trigger="focus", tooltip-placement="right", required)
+                input.input-block-level(type="text", name="cvc", ui-validate=" 'validate.cvc($value)' ", ng-model="new_card.cvc",  ng-removefill, tooltip="These are the numbers on the back of your card in the signature box for most cards, or above your card number for American Express cards.", tooltip-trigger="focus", tooltip-placement="right", required)
         .row-fluid
             .span6
                 label Billing Country
-                geo-typeahead(typeahead-factory="Countries", name="billing_country", typeahead-on-select="setParentScope('new_card', 'address_country', selected)")
+                geo-typeahead.input-block-level(typeahead-factory="Countries", name="billing_country", typeahead-on-select="setParentScope('new_card', 'address_country', selected)")
             .span6
                 label Billing State
-                geo-typeahead(typeahead-factory="States", name="billing_state", typeahead-on-select="setParentScope('new_card', 'address_state', selected)")
+                geo-typeahead.input-block-level(typeahead-factory="States", name="billing_state", typeahead-on-select="setParentScope('new_card', 'address_state', selected)")
         .row-fluid
             .span6
                 label Billing Zip
-                input(type="text", ng-model="new_card.address_zip")
+                input.input-block-level(type="text", ng-model="new_card.address_zip")
             .span6
                 label Billing City
-                input(type="text", ng-model="new_card.address_city")
+                input.input-block-level(type="text", ng-model="new_card.address_city")
         .row-fluid
             .span6
                 label Billing Address
-                input(type="text", ng-model="new_card.address_line1")
+                input.input-block-level(type="text", ng-model="new_card.address_line1")
             .span6(ng-show="!signup")
                 label &nbsp; &nbsp;
                 input.btn(type="button", value="Save Card", ng-click="add(new_card)")
