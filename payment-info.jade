@@ -35,7 +35,7 @@ div#paymentInfo
         .row-fluid
             .span6
                 label Card Expiration
-                input.input-block-level(type="text", name="expiration", ui-validate=" 'validate.expiry($value)' ", ng-model="new_card.expiration", ui-mask="99/9999", ng-removefill, tooltip="Should be formatted MM/YYYY", tooltip-trigger="focus", tooltip-placement="right", required)
+                input.input-block-level(type="text", name="expiration", ui-validate=" 'validate.expiry($value)' ", ng-model="new_card.expiration", tooltip="Should be formatted MMYYYY", tooltip-trigger="focus", tooltip-placement="right", required)
             .span6
                 label Card CVC
                 input.input-block-level(type="text", name="cvc", ui-validate=" 'validate.cvc($value)' ", ng-model="new_card.cvc",  ng-removefill, tooltip="These are the numbers on the back of your card in the signature box for most cards, or above your card number for American Express cards.", tooltip-trigger="focus", tooltip-placement="right", required)
